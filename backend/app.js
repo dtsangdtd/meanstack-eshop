@@ -15,6 +15,7 @@ const cors = require("cors");
 app.use(cors());
 app.options("*", cors());
 app.use(authJwt());
+app.use("/public/uploads", express.static(__dirname + "/public/uploads"));
 app.use(errorHandler);
 // Router
 const productRouter = require("./routers/products");
@@ -29,7 +30,7 @@ app.use(`${api}/users`, userRouter);
 app.use(`${api}/orders`, orderRouter);
 app.use(`${api}/categories`, categoriesRouter);
 
-mongoose.set('useFindAndModify', false);
+mongoose.set("useFindAndModify", false);
 //Connect database
 mongoose
   .connect(process.env.CONNECTION_STRING, {

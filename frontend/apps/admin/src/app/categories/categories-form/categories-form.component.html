@@ -1,5 +1,9 @@
+<p-toast position="top-right"></p-toast>
 <div class="admin-page">
-  <p-card header="Add Category" subheader="You can add or edit category">
+  <p-card
+    [header]="editMode ? 'Edit Category' : 'Add Category'"
+    subheader="You can add or edit category"
+  >
     <div class="p-grid mb-4">
       <div class="p-col-12">
         <p-toolbar>
@@ -7,8 +11,9 @@
           <div class="p-toolbar-group-right">
             <p-button
               styleClass="p-button-primary mr-2"
-              label="Create"
+              [label]="editMode ? 'Update' : 'Create'"
               icon="pi pi-plus"
+              (click)="onSubmit()"
             >
             </p-button>
             <p-button
@@ -24,25 +29,43 @@
 
     <div class="p-grid">
       <div class="p-col-12">
-        <form action="">
+        <form [formGroup]="form">
           <div class="formgrid grid">
             <div class="field col">
               <label for="name">Name</label>
               <input
+                formControlName="name"
                 id="name"
                 type="text"
                 class="inputfield w-full"
                 pInputText
               />
+              <small
+                *ngIf="categoryForm.name.invalid && isSubmited"
+                class="p-error"
+                >Name is required</small
+              >
             </div>
             <div class="field col">
               <label for="icon">Icon</label>
               <input
+                formControlName="icon"
                 id="icon"
                 type="text"
                 class="inputfield w-full"
                 pInputText
               />
+              <small
+                *ngIf="categoryForm.icon.invalid && isSubmited"
+                class="p-error"
+                >Icon is required</small
+              >
+            </div>
+
+            <div class="field col">
+              <label for="color">Color</label>
+              <br />
+              <p-colorPicker formControlName="color"></p-colorPicker>
             </div>
           </div>
         </form>

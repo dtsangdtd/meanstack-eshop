@@ -4,6 +4,9 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ColorPickerModule} from 'primeng/colorpicker';
 @NgModule({
   declarations: [],
   imports: [
@@ -12,6 +15,9 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     TableModule,
     InputTextModule,
+    ToastModule,
+    ConfirmDialogModule,
+    ColorPickerModule
   ],
   exports: [
     CardModule,
@@ -19,6 +25,9 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     TableModule,
     InputTextModule,
+    ToastModule,
+    ConfirmDialogModule,
+    ColorPickerModule
   ],
 })
 export class PrimengModule {}

@@ -13,8 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoriesFormComponent implements OnInit {
   form: FormGroup;
-  isSubmited: boolean = false;
-  editMode: boolean = false;
+  isSubmited = false;
+  editMode = false;
   currentCategoryId: string;
   constructor(
     private formBuilder: FormBuilder,
@@ -49,7 +49,9 @@ export class CategoriesFormComponent implements OnInit {
       this._addCategory(category);
     }
   }
-
+  onCancle() {
+    this.location.back();
+  }
   get categoryForm() {
     return this.form.controls;
   }
@@ -59,11 +61,11 @@ export class CategoriesFormComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'successfull',
-          detail: 'Create category successfull!',
+          detail: `Create ${response.category.name} category successfull!`,
         });
         timer(500)
           .toPromise()
-          .then((done) => {
+          .then(() => {
             this.location.back();
           });
       },
@@ -71,7 +73,7 @@ export class CategoriesFormComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'The server error',
+          detail: error,
         });
       }
     );
@@ -88,7 +90,7 @@ export class CategoriesFormComponent implements OnInit {
           });
           timer(500)
             .toPromise()
-            .then((done) => {
+            .then(() => {
               this.location.back();
             });
         },
@@ -96,7 +98,7 @@ export class CategoriesFormComponent implements OnInit {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: 'The server error',
+            detail: error,
           });
         }
       );

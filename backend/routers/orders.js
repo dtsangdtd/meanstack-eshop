@@ -1,12 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
-const Order = require("../models/order");
-const OrderItem = require("../models/order-item");
+const { Order } = require("../models/order");
+const { OrderItem } = require("../models/order-item");
 router.get("/", async (req, res, next) => {
-  const orderList = await Order.find()
-    .populate("user", "name")
-    .sort({ dateOrdered: -1 });
+  const orderList = await Order.find().populate("user").sort({ dateOrdered: -1 });;
   if (!orderList)
     return res.status(500).json({
       success: false,
@@ -58,7 +55,7 @@ router.post("/", async (req, res, next) => {
 });
 router.get("/:id", async (req, res, next) => {
   const order = await Order.findById(req.params.id)
-    .populate("user", "name")
+    .populate("user")
     .populate({
       path: "orderItems",
       populate: { path: "product", populate: "category" },

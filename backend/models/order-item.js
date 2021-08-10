@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const orderItemsSchema = mongoose.Schema({
+const orderItemSchema = mongoose.Schema({
   quantity: {
     type: Number,
     required: true,
@@ -10,12 +10,12 @@ const orderItemsSchema = mongoose.Schema({
     ref: "Product",
   },
 });
-orderItemsSchema.virtual("id").get(function () {
+orderItemSchema.virtual("id").get(function () {
   return this._id.toHexString();
 });
 
 // Ensure virtual fields are serialised.
-orderItemsSchema.set("toJSON", {
+orderItemSchema.set("toJSON", {
   virtuals: true,
 });
-module.exports = mongoose.model("OrderItem", orderItemsSchema);
+exports.OrderItem = mongoose.model("OrderItem", orderItemSchema);

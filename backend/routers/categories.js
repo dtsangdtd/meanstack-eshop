@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const Category = require("../models/category");
+const { Category } = require("../models/category");
 const mongoose = require("mongoose");
 router.get("/", async (req, res, next) => {
   const categoryList = await Category.find();
   if (!categoryList)
-     res.status(500).json({
+    res.status(500).json({
       success: false,
     });
 
@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   let categoryById = await Category.findById(req.params.id);
   if (!categoryById)
-     res.status(500).json({
+    res.status(500).json({
       message: "The category with the given ID was not found!",
     });
 

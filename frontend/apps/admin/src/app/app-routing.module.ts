@@ -1,3 +1,5 @@
+import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
+import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
@@ -26,6 +28,8 @@ const routes: Routes = [
       { path: 'users', component: UsersListComponent },
       { path: 'users/form', component: UsersFormComponent },
       { path: 'users/form/:id', component: UsersFormComponent },
+      { path: 'orders', component: OrdersListComponent },
+      { path: 'orders/:id', component: OrdersDetailComponent },
     ],
   },
 ];

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -47,8 +47,8 @@ userSchema.virtual("id").get(function () {
   return this._id.toHexString();
 });
 
-// Ensure virtual fields are serialised.
 userSchema.set("toJSON", {
   virtuals: true,
 });
-module.exports = mongoose.model("User", userSchema);
+
+exports.User = mongoose.model("User", userSchema);

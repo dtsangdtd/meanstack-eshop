@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
-const User = require("../models/user");
+const { User } = require("../models/user");
 
 router.get("/", async (req, res, next) => {
   const userList = await User.find().select("-passwordHash");
@@ -17,11 +17,9 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
   User.findById(req.params.id)
-    .select("-passwordHash")
+
     .then((result) => {
       res.status(200).json({
-        success: true,
-
         user: result,
       });
       console.log(result);
@@ -35,10 +33,11 @@ router.get("/:id", (req, res, next) => {
     });
 });
 router.post("/", async (req, res) => {
+  let password = bcrypt.hashSync(req.body.password, 10);
   let user = new User({
     name: req.body.name,
     email: req.body.email,
-    passwordHash: bcrypt.hashSync(req.body.password, 10),
+    passwordHash: password,
     phone: req.body.phone,
     isAdmin: req.body.isAdmin,
     street: req.body.street,
@@ -85,7 +84,7 @@ router.post("/register", (req, res, next) => {
       });
     });
 });
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", async (req, res) => {
   const userExist = await User.findById(req.params.id);
   let newPassword;
   if (req.body.password) {
@@ -93,29 +92,28 @@ router.put("/:id", async (req, res, next) => {
   } else {
     newPassword = userExist.passwordHash;
   }
-  const user = await User.findByIdAndUpdate(req.params.id, {
-    name: req.body.name,
-    email: req.body.email,
-    color: req.body.color,
-    passwordHash: newPassword,
-    phone: req.body.phone,
-    isAdmin: req.body.isAdmin,
-    street: req.body.street,
-    apartment: req.body.apartment,
-    zip: req.body.zip,
-    city: req.body.city,
-    country: req.body.country,
-  });
-  if (!user) {
-    return res
-      .status(401)
-      .json({ success: false, message: "Not found the User!" });
-  }
-  res
-    .status(200)
-    .json({ success: true, message: "Update successfull", user: user });
-});
 
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    {
+      name: req.body.name,
+      email: req.body.email,
+      passwordHash: newPassword,
+      phone: req.body.phone,
+      isAdmin: req.body.isAdmin,
+      street: req.body.street,
+      apartment: req.body.apartment,
+      zip: req.body.zip,
+      city: req.body.city,
+      country: req.body.country,
+    },
+    { new: true }
+  );
+
+  if (!user) return res.status(400).send("the user cannot be created!");
+
+  res.send(user);
+});
 router.post("/login", async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
   const secret = process.env.secret;

@@ -57,6 +57,7 @@ export class ProductsFormComponent implements OnInit {
       fileReader.readAsDataURL(file);
     }
   }
+
   onSubmit() {
     this.isSubmited = true;
     if (this.form.invalid) {
@@ -72,7 +73,9 @@ export class ProductsFormComponent implements OnInit {
       this._addProduct(productFormData);
     }
   }
-  onCancle() {}
+  onCancle() {
+    this.location.back();
+  }
   private _getCategories() {
     this.categoriesService.getCategories().subscribe((categories) => {
       this.categories = categories;

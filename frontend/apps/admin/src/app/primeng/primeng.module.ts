@@ -12,7 +12,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { DropdownModule } from 'primeng/dropdown';
 import { EditorModule } from 'primeng/editor';
-
+import { TagModule } from 'primeng/tag';
+import { InputMaskModule } from 'primeng/inputmask';
 @NgModule({
   declarations: [],
   imports: [
@@ -29,6 +30,8 @@ import { EditorModule } from 'primeng/editor';
     InputSwitchModule,
     DropdownModule,
     EditorModule,
+    TagModule,
+    InputMaskModule,
   ],
   exports: [
     CardModule,
@@ -44,6 +47,8 @@ import { EditorModule } from 'primeng/editor';
     InputSwitchModule,
     DropdownModule,
     EditorModule,
+    TagModule,
+    InputMaskModule,
   ],
 })
 export class PrimengModule {}

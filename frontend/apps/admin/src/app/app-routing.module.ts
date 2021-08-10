@@ -1,7 +1,9 @@
+import { UsersFormComponent } from './pages/users/users-form/users-form.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
 
-import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
-import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
+import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
+import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { Routes } from '@angular/router';
@@ -21,6 +23,9 @@ const routes: Routes = [
       { path: 'products', component: ProductsListComponent },
       { path: 'products/form', component: ProductsFormComponent },
       { path: 'products/form/:id', component: ProductsFormComponent },
+      { path: 'users', component: UsersListComponent },
+      { path: 'users/form', component: UsersFormComponent },
+      { path: 'users/form/:id', component: UsersFormComponent },
     ],
   },
 ];

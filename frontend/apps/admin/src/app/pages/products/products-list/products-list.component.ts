@@ -1,6 +1,6 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
-import { ProductsService } from '@bluebits/products';
+import { Product, ProductsService } from '@bluebits/products';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styles: [],
 })
 export class ProductsListComponent implements OnInit {
-  products = [];
+  products: Product[] = [];
   constructor(
     private productsService: ProductsService,
     private router: Router,

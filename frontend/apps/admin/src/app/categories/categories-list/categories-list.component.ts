@@ -18,9 +18,7 @@ export class CategoriesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.categoriesService.getCategories().subscribe((categoriesData) => {
-      this.categories = categoriesData;
-    });
+    this._getCategory();
   }
   deleteCategory(id: string) {
     this.confirmationService.confirm({

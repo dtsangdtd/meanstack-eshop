@@ -49,14 +49,10 @@ router.get("/:id", async (req, res) => {
     res.status(400).send("Invalid Product Id");
   }
   const product = await Product.findById(req.params.id).populate("category");
-  console.log(product);
   if (!product) {
     return res.status(500).json({ success: false, message: "Not found!" });
   }
-  res.status(200).json({
-    success: true,
-    product: product,
-  });
+  res.status(200).send(product);
 });
 
 router.post(`/`, uploadOptions.single("image"), async (req, res, next) => {
@@ -64,7 +60,8 @@ router.post(`/`, uploadOptions.single("image"), async (req, res, next) => {
   if (!category) return res.status(400).send("Invalid Category");
   const file = req.file;
   if (!file) return res.status(400).send("No image in the request!");
-  const fileName = req.file.filename;
+
+  const fileName = file.filename;
   const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
   const product = new Product({
     name: req.body.name,
@@ -103,13 +100,16 @@ router.put("/:id", uploadOptions.single("image"), async (req, res, next) => {
   }
   const category = await Category.findById(req.body.category);
   if (!category) return res.status(400).send("Invalid Category");
+  const product = await Product.findById(req.params.id);
+  if (!product) return res.status(400).send("Invalid Product!");
+  const file = req.file;
   let imagePath;
-  if (req.file) {
-    const fileName = req.file.filename;
+  if (file) {
+    const fileName = file.filename;
     const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
     imagePath = `${basePath}${fileName}`;
   } else {
-    imagePath = req.body.image;
+    imagePath = product.image;
   }
   const productUpdate = await Product.findByIdAndUpdate(req.params.id, {
     name: req.body.name,

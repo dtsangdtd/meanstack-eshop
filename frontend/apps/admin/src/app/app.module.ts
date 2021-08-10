@@ -17,6 +17,8 @@ import { CategoriesFormComponent } from './categories/categories-form/categories
 
 import { CategoriesService } from '@bluebits/products';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     SidebarComponent,
     CategoriesListComponent,
     CategoriesFormComponent,
+    ProductsListComponent,
+    ProductsFormComponent,
   ],
   imports: [
     BrowserModule,

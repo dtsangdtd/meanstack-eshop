@@ -1,3 +1,4 @@
+import { UsersModule } from '@bluebits/users';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -47,6 +48,7 @@ import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detai
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    UsersModule,
   ],
   providers: [CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],

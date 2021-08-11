@@ -1,0 +1,64 @@
+<div class="login-register">
+  <div class="login-register-panel">
+    <div class="grid-container">
+      <div class="grid-item">
+        <img src="assets/images/login-register.jpg" alt="" />
+      </div>
+      <div class="grid-item">
+        <h3>Welcome!</h3>
+        <h2>Login Page</h2>
+        <form [formGroup]="loginFormGroup">
+          <div class="grid fluid m-4">
+            <div class="col-12">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"
+                  ><i class="pi pi-user"></i
+                ></span>
+                <input
+                  type="email"
+                  formControlName="email"
+                  pInputText
+                  placeholder="Email"
+                />
+              </div>
+              <small
+                *ngIf="loginForm.email.invalid && isSubmited"
+                class="p-error"
+              >
+                <span *ngIf="loginForm.email.errors.required"
+                  >Password is required</span
+                >
+                <span *ngIf="loginForm.email.errors.email">Email invalid!</span>
+              </small>
+            </div>
+            <div class="col-12">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"
+                  ><i class="pi pi-lock"></i
+                ></span>
+                <input
+                  type="password"
+                  formControlName="password"
+                  pInputText
+                  placeholder="Password"
+                />
+              </div>
+              <small
+                *ngIf="loginForm.password.invalid && isSubmited"
+                class="p-error"
+                >Password is required</small
+              >
+            </div>
+
+            <div class="col-12">
+              <p-button (onClick)="onSubmit()"
+                >Sign in<i class="pi pi-sign-in"></i
+              ></p-button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<p-toast></p-toast>

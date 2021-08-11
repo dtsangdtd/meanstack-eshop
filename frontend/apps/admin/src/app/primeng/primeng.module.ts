@@ -14,6 +14,10 @@ import { DropdownModule } from 'primeng/dropdown';
 import { EditorModule } from 'primeng/editor';
 import { TagModule } from 'primeng/tag';
 import { InputMaskModule } from 'primeng/inputmask';
+import { FieldsetModule } from 'primeng/fieldset';
+import {FileUploadModule} from 'primeng/fileupload';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 @NgModule({
   declarations: [],
   imports: [
@@ -32,6 +36,10 @@ import { InputMaskModule } from 'primeng/inputmask';
     EditorModule,
     TagModule,
     InputMaskModule,
+    FieldsetModule,
+    FileUploadModule,
+    MessagesModule,
+    MessageModule
   ],
   exports: [
     CardModule,
@@ -49,6 +57,10 @@ import { InputMaskModule } from 'primeng/inputmask';
     EditorModule,
     TagModule,
     InputMaskModule,
+    FieldsetModule,
+    FileUploadModule,
+    MessagesModule,
+    MessageModule
   ],
 })
 export class PrimengModule {}

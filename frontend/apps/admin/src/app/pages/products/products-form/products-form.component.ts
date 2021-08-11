@@ -46,6 +46,8 @@ export class ProductsFormComponent implements OnInit {
     });
   }
   onImageUpload(event) {
+    console.log(event);
+
     const file = event.target.files[0];
     if (file) {
       this.form.patchValue({ image: file });

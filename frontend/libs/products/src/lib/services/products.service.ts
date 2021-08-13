@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -27,5 +28,10 @@ export class ProductsService {
   }
   deleteProduct(productId: String): Observable<any> {
     return this.http.delete<Product>(`${this.apiURLProducts}/${productId}`);
+  }
+  getCountProduct(): Observable<any> {
+    return this.http
+      .get<any>(`${this.apiURLProducts}` + '/get/count')
+      .pipe(map((objectValues: any) => objectValues.productCount));
   }
 }

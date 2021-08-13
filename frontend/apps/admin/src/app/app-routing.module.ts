@@ -1,3 +1,4 @@
+import { AuthGuard } from '@bluebits/users';
 import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
@@ -17,8 +18,9 @@ const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent },
+      { path: '', component: DashboardComponent },
       { path: 'categories', component: CategoriesListComponent },
       { path: 'categories/form', component: CategoriesFormComponent },
       { path: 'categories/form/:id', component: CategoriesFormComponent },
@@ -32,6 +34,11 @@ const routes: Routes = [
       { path: 'orders/:id', component: OrdersDetailComponent },
     ],
   },
+  // {
+  //   path: '**',
+  //   redirectTo: '',
+  //   pathMatch: 'full',
+  // },
 ];
 @NgModule({
   declarations: [],

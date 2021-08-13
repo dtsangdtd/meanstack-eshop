@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '@evn/environment';
 import { User } from '../models/users';
 import * as countriesLib from 'i18n-iso-countries';
+import { map } from 'rxjs/operators';
 declare const require;
 @Injectable({
   providedIn: 'root',
@@ -42,5 +43,10 @@ export class UsersService {
 
   getCountry(countryKey: string): string {
     return countriesLib.getName(countryKey, 'en');
+  }
+  getCountUser(): Observable<any> {
+    return this.http
+      .get<any>(`${this.apiURLUsers}` + '/get/count')
+      .pipe(map((objectValues: any) => objectValues.userCount));
   }
 }

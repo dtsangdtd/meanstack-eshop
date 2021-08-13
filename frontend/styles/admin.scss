@@ -11,11 +11,15 @@
 @import './base/configuration.scss';
 
 //libs
-@import './libs/ui/index.scss';
-@import './libs/products/product-item.scss';
+
 
 //Shared
+@import './shop/shared/nav.scss';
+@import './shop/shared/footer.scss';
+@import './shop/shared/header.scss';
 
 @import './admin/shell.scss';
+@import './admin/dashboard.scss';
+
 //libs
 @import './libs/users/users.scss';

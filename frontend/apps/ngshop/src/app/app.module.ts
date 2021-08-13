@@ -1,3 +1,7 @@
+import { ProductsModule } from './../../../../libs/products/src/lib/products.module';
+import { CommonModule } from '@angular/common';
+
+import { PrimengModule } from './../../../admin/src/app/primeng/primeng.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,8 +13,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@bluebits/ui';
-import { AccordionModule } from 'primeng/accordion';
-import { ButtonModule } from 'primeng/button';
+import { NavComponent } from './shared/nav/nav.component';
+
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'products', component: ProductListComponent },
@@ -23,14 +27,16 @@ const routes: Routes = [
     ProductListComponent,
     HeaderComponent,
     FooterComponent,
+    NavComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     UiModule,
-    AccordionModule,
-    ButtonModule,
+    ProductsModule,
     BrowserAnimationsModule,
+    PrimengModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

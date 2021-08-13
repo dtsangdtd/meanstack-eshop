@@ -138,7 +138,7 @@ router.get("/get/count", async (req, res, next) => {
   }
   res.status(200).json({
     success: true,
-    productCount: userCount,
+    userCount: userCount,
   });
 });
 // DELETE USER

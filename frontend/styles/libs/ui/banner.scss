@@ -1,0 +1,39 @@
+.banner {
+  height: 250px;
+  width: 100%;
+  background-color: var(--cyan-100);
+  border-radius: 15px;
+  &-text {
+    color: var(--surface-700);
+    margin-top: 10px;
+    padding-top: 30px;
+    h1 {
+      margin: 0;
+      font-size: 3em;
+      font-weight: 400;
+    }
+    h2 {
+      margin: 0;
+      font-size: 2em;
+      font-weight: 300;
+    }
+  }
+  &-image {
+    text-align: center;
+  }
+  &-button {
+    background-color: var(--surface-0);
+    color: $primary-color;
+    border: 0;
+    border-radius: 15px;
+    &:enabled:hover {
+      background-color: var(--surface-0) !important;
+      color: $primary-color;
+      border: 0 !important;
+      outline: none;
+    }
+    &:focus {
+      box-shadow: 0 0 0 0.2rem #ecadad;
+    }
+  }
+}

@@ -1,7 +1,8 @@
-import { ProductsModule } from './../../../../libs/products/src/lib/products.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductsModule } from '@bluebits/products';
 import { CommonModule } from '@angular/common';
 
-import { PrimengModule } from './../../../admin/src/app/primeng/primeng.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,10 +15,18 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@bluebits/ui';
 import { NavComponent } from './shared/nav/nav.component';
+import { PrimengModule } from './primeng/primeng.module';
+import { ProductsDetailPagesComponent } from './pages/products-details/products-detail-pages/products-detail-pages.component';
+import { ProductPageComponent } from './pages/products-details/product-page/product-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
-  { path: 'products', component: ProductListComponent },
+  {
+    path: 'products',
+    component: ProductListComponent,
+  },
+  { path: 'category/:categoryid', component: ProductListComponent },
+  { path: 'products/:productId', component: ProductPageComponent },
 ];
 
 @NgModule({
@@ -28,11 +37,15 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     NavComponent,
+    ProductsDetailPagesComponent,
+    ProductPageComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
+    FormsModule,
     UiModule,
     ProductsModule,
     BrowserAnimationsModule,

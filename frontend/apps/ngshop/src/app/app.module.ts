@@ -18,6 +18,8 @@ import { NavComponent } from './shared/nav/nav.component';
 import { PrimengModule } from './primeng/primeng.module';
 import { ProductsDetailPagesComponent } from './pages/products-details/products-detail-pages/products-detail-pages.component';
 import { ProductPageComponent } from './pages/products-details/product-page/product-page.component';
+import { OrdersModule } from '@bluebits/orders';
+import { MessageService } from 'primeng/api';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -50,8 +52,9 @@ const routes: Routes = [
     ProductsModule,
     BrowserAnimationsModule,
     PrimengModule,
+    OrdersModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

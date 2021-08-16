@@ -27,6 +27,7 @@ import { UiGalleryComponent } from './ui-gallery/ui-gallery.component';
     FeaturedProductsComponent,
     ProductItemComponent,
     UiGalleryComponent,
+    
   ],
 })
 export class UiModule {}

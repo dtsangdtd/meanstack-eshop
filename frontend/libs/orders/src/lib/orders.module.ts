@@ -11,6 +11,8 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { ThankYouComponent } from './pages/thank-you/thank-you.component';
 
 export const ordersRoutes: Route[] = [
   { path: 'cart', component: CartPageComponent },
@@ -40,6 +42,8 @@ export const ordersRoutes: Route[] = [
     MessagesComponent,
     CartPageComponent,
     OrderSummaryComponent,
+    CheckoutPageComponent,
+    ThankYouComponent,
   ],
 })
 export class OrdersModule {

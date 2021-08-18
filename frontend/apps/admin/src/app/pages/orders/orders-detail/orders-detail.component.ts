@@ -1,9 +1,8 @@
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { Order, OrdersService } from '@bluebits/orders';
+import { Order, OrdersService,ORDER_STATUS } from '@bluebits/orders';
 import { Component, OnInit } from '@angular/core';
-import { ORDER_STATUS } from '../order.constants';
 import { Location } from '@angular/common';
 
 @Component({

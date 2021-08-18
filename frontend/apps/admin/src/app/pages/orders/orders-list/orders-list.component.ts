@@ -1,9 +1,8 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { OrdersService } from '@bluebits/orders';
-import { Order } from '@bluebits/orders';
+import { Order ,ORDER_STATUS} from '@bluebits/orders';
 import { Component, OnInit } from '@angular/core';
-import { ORDER_STATUS } from '../order.constants';
 @Component({
   selector: 'bluebits-orders-list',
   templateUrl: './orders-list.component.html',

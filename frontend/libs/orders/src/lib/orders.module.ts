@@ -1,4 +1,5 @@
-import { FormsModule } from '@angular/forms';
+import { HasRoleGuard } from './../../../users/src/lib/services/has-role.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartService } from './services/cart.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,8 +15,17 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { ThankYouComponent } from './pages/thank-you/thank-you.component';
 
+import { InputTextModule } from 'primeng/inputtext';
+import { InputMaskModule } from 'primeng/inputmask';
+import { FieldsetModule } from 'primeng/fieldset';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { DropdownModule } from 'primeng/dropdown';
+
 export const ordersRoutes: Route[] = [
-  { path: 'cart', component: CartPageComponent },
+  { path: 'cart', component: CartPageComponent, canActivate: [HasRoleGuard] },
+  { path: 'checkout', component: CheckoutPageComponent },
+  { path: 'thankyou', component: ThankYouComponent },
 ];
 
 @NgModule({
@@ -27,6 +37,13 @@ export const ordersRoutes: Route[] = [
     ButtonModule,
     InputNumberModule,
     FormsModule,
+    ReactiveFormsModule,
+    DropdownModule,
+    InputTextModule,
+    InputMaskModule,
+    FieldsetModule,
+    MessagesModule,
+    MessageModule,
   ],
   exports: [
     CartIconComponent,
@@ -36,6 +53,12 @@ export const ordersRoutes: Route[] = [
     ButtonModule,
     InputNumberModule,
     OrderSummaryComponent,
+    DropdownModule,
+    InputTextModule,
+    InputMaskModule,
+    FieldsetModule,
+    MessagesModule,
+    MessageModule,
   ],
   declarations: [
     CartIconComponent,

@@ -10,4 +10,32 @@ header {
       color: $primary-color;
     }
   }
+
+  .icon {
+    display: inline-flex;
+
+    .icon-user {
+      height: 20px;
+      overflow: hidden;
+      transition: all 0.2s ease-in-out;
+      ul {
+        list-style: none;
+        opacity: 0;
+      }
+      &:hover {
+        height: 60px;
+        transition: all 0.2s ease-in-out;
+        ul {
+          opacity: 1;
+          li:hover {
+            color: $primary-color;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    orders-cart-icon {
+      margin-left: -20px;
+    }
+  }
 }

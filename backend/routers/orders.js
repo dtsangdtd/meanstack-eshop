@@ -3,7 +3,9 @@ const router = express.Router();
 const { Order } = require("../models/order");
 const { OrderItem } = require("../models/order-item");
 router.get("/", async (req, res, next) => {
-  const orderList = await Order.find().populate("user").sort({ dateOrdered: -1 });;
+  const orderList = await Order.find()
+    .populate("user")
+    .sort({ dateOrdered: -1 });
   if (!orderList)
     return res.status(500).json({
       success: false,
@@ -143,4 +145,5 @@ router.get("/get/userorder/:userId", async (req, res, next) => {
   }
   res.status(200).json({ userOrderList: userOrderList });
 });
+
 module.exports = router;

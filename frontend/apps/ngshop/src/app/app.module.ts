@@ -10,20 +10,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { ProductListComponent } from './pages/product-list/product-list.component';
-import { RouterModule, Routes } from '@angular/router';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
+import { RouterModule } from '@angular/router';
+
 import { UiModule } from '@bluebits/ui';
-import { NavComponent } from './shared/nav/nav.component';
+
 import { PrimengModule } from './primeng/primeng.module';
-import { ProductPageComponent } from './pages/products-details/product-page/product-page.component';
 import { OrdersModule } from '@bluebits/orders';
 import { MessageService } from 'primeng/api';
 import { UsersModule } from '@bluebits/users';
 import { AppRoutingModule } from './app-routing.module';
+import { UserOrderHistoryComponent } from './user-order-history/user-order-history.component';
 @NgModule({
-  declarations: [AppComponent, HomePageComponent],
+  declarations: [AppComponent, UserOrderHistoryComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -41,5 +39,6 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],
+  exports: [UserOrderHistoryComponent],
 })
 export class AppModule {}
